@@ -12,7 +12,7 @@ It allows users to browse, view, and purchase posters online with a smooth shopp
 - 💳 **Checkout System** — Secure and simple purchasing process.
 - 🎨 **Modern UI** — Clean, aesthetic, and user-friendly interface.
 - 📂 **Organized Code** — Clear folder structure for easy maintenance.
-- 🌐 **Live Demo** — [View Here](https://abhipariharr.github.io/Buy-Poster/)
+- 🌐 **Live Demo** — [View Here](https://abhipariharr.github.io/Posters-Of-The-Past/)
 
 ---
 
