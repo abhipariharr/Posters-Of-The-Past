@@ -1,0 +1,11 @@
+
+function addToCart() {
+  const quantity = document.getElementById("quantity").value;
+  localStorage.setItem("sydney_cart", JSON.stringify({ quantity: parseInt(quantity) }));
+  alert("🛒 " + quantity + " t-shirt(s) added to your cart!");
+}
+
+function showScent() {
+  const modal = new bootstrap.Modal(document.getElementById('scentModal'));
+  modal.show();
+}

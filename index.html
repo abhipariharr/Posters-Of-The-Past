@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posters Of The Past</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Posters Of The Past
+        <!-- <img src="Images/logo.png" alt="Logo" width="115" height="55"> -->
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="font-size: 18px; font-weight: 500;">
+          <li class="nav-item head">
+            <a class="nav-link active me-3 " aria-current="page" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item head">
+            <a class="nav-link  me-3" aria-current="page" href="hollywood.html">HollyWood</a>
+          </li>
+          <li class="nav-item head">
+            <a class="nav-link  me-3" aria-current="page" href="Bollywood.html">BollyWood</a>
+          </li>
+          <li class="nav-item head">
+            <a class="nav-link  me-3" aria-current="page" href="contact.html">Wear</a>
+          </li>
+          <li class="nav-item">
+            <!-- Cart Badge in Navbar -->
+            <a href="cart_localstorage.html" class="btn btn-outline-light">
+              🛒 <span id="cartBadge" class="badge bg-danger">0</span>
+            </a>
+
+           
+
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar end -->
+
+
+
+  <header class="hero-section d-flex align-items-center justify-content-center text-center text-light"
+    data-aos="fade-up">
+    <div>
+      <div style="margin-top: 79px;"></div>
+      <h1 class="display-4 fw-bold">Movies Posters</h1>
+      <p class="lead" style="font-weight: 500;">Own a piece of unforgettable Cinemas memories...❤️</p>
+    </div>
+  </header>
+
+  <section class="container py-5 mt-5" id="product">
+    <div class="row align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <img src="images/1.jpg" class="img-fluid rounded shadow" alt="Used T-shirt">
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <h2>Fight Club - Iconic Poster</h2>
+        <p>Clean. Bold. Iconic. This Fight Club poster captures the essence of rebellion and raw masculinity. 🎞️</p>
+        <h4 class="text-danger">₹99.99</h4>
+        <div class="d-flex align-items-center gap-2 mt-2">
+          <input type="number" id="quantity" class="form-control w-25" value="1" min="1">
+          <button class="btn btn-danger" onclick="addToCart()">Add to Cart</button>
+          <!-- <button class="btn btn-outline-secondary" onclick="showScent()">Smell 👃</button> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5">
+  <h3 class="text-center mb-4" data-aos="zoom-in">Photoshoot Gallery</h3>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="flip-left">
+      <a href="product.html?id=1">
+        <img src="images/fightclub.jpg" class="img-fluid rounded" alt="gallery">
+      </a>
+    </div>
+    <div class="col-md-4" data-aos="flip-up">
+      <a href="product.html?id=2">
+        <img src="images/saint.jpg" class="img-fluid rounded" alt="gallery">
+      </a>
+    </div>
+    <div class="col-md-4" data-aos="flip-right">
+      <a href="product.html?id=3">
+        <img src="images/soar.jpg" class="img-fluid rounded" alt="gallery">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="bg-dark text-light text-center py-3 mt-5">
+    © 2025 Poster of the Past. All Rights Reserved.
+  </footer>
+
+  <!-- Scent Modal -->
+  <div class="modal fade" id="scentModal" tabindex="-1" aria-labelledby="scentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="scentModalLabel">Scent Simulator</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Imagine a delicate mix of rose petals 🌹, vanilla 🍦, and the glamour of Hollywood 🎬.</p>
+          <img src="https://i.imgur.com/dLDYrpU.gif" class="img-fluid rounded" alt="Scent animation" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- add to card code -->
+  <script src=js/cart.js> </script>
+  <script src="js/product.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

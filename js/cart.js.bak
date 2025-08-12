@@ -1,0 +1,66 @@
+const cartData = JSON.parse(localStorage.getItem("sydney_cart")) || { quantity: 0 };
+const cartContent = document.getElementById("cartContent");
+const checkoutSection = document.getElementById("checkoutSection");
+
+function renderCart() {
+  if (cartData.quantity > 0) {
+    cartContent.innerHTML = `
+      <p>
+        You have <strong>${cartData.quantity}</strong> Sydney's used t-shirt(s) in your cart.
+      </p>
+      <p>Total: ₹${cartData.quantity * 999}</p>
+      <div class="d-flex justify-content-center gap-2 mt-3">
+        <button id="addBtn" class="btn btn-primary">+</button>
+        <button id="removeBtn" class="btn btn-danger">−</button>
+      </div>
+    `;
+    checkoutSection.style.display = "block";
+
+    document.getElementById("addBtn").addEventListener("click", () => {
+      cartData.quantity++;
+      localStorage.setItem("sydney_cart", JSON.stringify(cartData));
+      renderCart();
+    });
+
+    document.getElementById("removeBtn").addEventListener("click", () => {
+      if (cartData.quantity > 1) {
+        cartData.quantity--;
+      } else {
+        cartData.quantity = 0;
+        localStorage.removeItem("sydney_cart");
+      }
+      localStorage.setItem("sydney_cart", JSON.stringify(cartData));
+      renderCart();
+    });
+
+  } else {
+    cartContent.innerHTML = "<p>Your cart is empty 😢</p>";
+    checkoutSection.style.display = "none";
+  }
+}
+
+renderCart();
+
+document.getElementById("paymentForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("Payment successful! Thank you 💖");
+  localStorage.removeItem("sydney_cart");
+  window.location.href = "index.html";
+});
+
+// Update cart badge on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const cartData = JSON.parse(localStorage.getItem("sydney_cart")) || { quantity: 0 };
+  const badge = document.getElementById("cartBadge");
+  if (badge) badge.textContent = cartData.quantity;
+});
+
+// Add to cart function
+function addToCart() {
+  const cartData = JSON.parse(localStorage.getItem("sydney_cart")) || { quantity: 0 };
+  cartData.quantity += 1;
+  localStorage.setItem("sydney_cart", JSON.stringify(cartData));
+
+  const badge = document.getElementById("cartBadge");
+  if (badge) badge.textContent = cartData.quantity;
+}
