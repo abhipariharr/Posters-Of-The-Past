@@ -1,27 +1,26 @@
-// js/products.js
+// js/product.js
+
 const products = [
   {
     id: 1,
     name: "Fight Club - Iconic Poster",
-    description: "Clean. Bold. Iconic. This Fight Club poster captures the essence of rebellion and raw masculinity. 🎞️",
+    description: "High-quality print of the cult classic Fight Club poster.",
     price: 99.99,
-    category: "hollywood",
-    image: "images/fightclub.jpg"
+    image: "images/1.jpg"
   },
   {
     id: 2,
-    name: "The Saint - Retro Poster",
-    description: "A stylish nod to the classic action-thriller, perfect for collectors and fans alike. 🕶️",
-    price: 89.99,
-    category: "hollywood",
-    image: "images/saint.jpg"
+    name: "Photoshoot Poster #2",
+    description: "Stylish photoshoot-themed poster for your collection.",
+    price: 99.99,
+    image: "images/2.jpg"
   },
   {
     id: 3,
-    name: "Soar - Inspirational Poster",
-    description: "Motivational and uplifting, a must-have for any wall that needs a spark of inspiration. 🕊️",
-    price: 79.99,
-    category: "bollywood",
-    image: "images/soar.jpg"
+    name: "Photoshoot Poster #3",
+    description: "Vintage-inspired poster with modern aesthetic.",
+    price: 99.99,
+    image: "images/3.jpg"
   }
+  // 👉 Add more products here as needed
 ];

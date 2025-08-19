@@ -2,19 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Cart - Sydney's T-Shirt</title>
+  <title>Your Cart - Posters Of The Past</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="bg-light">
   <div class="container py-5">
     <h2 class="mb-4 text-center">🛒 Your Cart</h2>
-    <div id="cartContent" class="text-center mb-5">
-      <!-- Cart item dynamically shown here -->
+
+    <!-- Cart items go here -->
+    <div id="cartItems" class="mb-4"></div>
+
+    <!-- Total & Checkout -->
+    <div id="cartFooter" style="display:none;">
+      <p id="cartTotal" class="fw-bold fs-5"></p>
+      <button class="btn btn-success w-100 mb-3" onclick="document.getElementById('checkoutSection').style.display='block'">
+        Proceed to Checkout
+      </button>
     </div>
 
+    <!-- Checkout Section -->
     <div id="checkoutSection" style="display: none;">
-      
       <h4 class="mb-3">Checkout</h4>
       <form id="paymentForm">
         <div class="mb-3">
@@ -40,8 +48,62 @@
     </div>
   </div>
 
-  <!-- Bootstrap & External JS -->
+<script>
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const listEl = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+    const footer = document.getElementById('cartFooter');
+
+    if (!cart.length) {
+      listEl.innerHTML = '<p>Your cart is empty.</p>';
+      totalEl.textContent = '';
+      footer.style.display = 'none';
+      return;
+    }
+
+    listEl.innerHTML = cart.map(i => `
+      <div class="d-flex align-items-center justify-content-between border rounded p-2 mb-2 cart-item" data-id="${i.id}">
+        <div class="d-flex align-items-center">
+          <img src="${i.img}" alt="${i.title}" style="width:80px;height:80px;object-fit:cover;border-radius:8px" class="me-3"/>
+          <div>
+            <h5 class="mb-1">${i.title}</h5>
+            <p class="mb-1">₹${i.price}</p>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-outline-secondary dec">−</button>
+          <span class="mx-2">${i.qty}</span>
+          <button class="btn btn-sm btn-outline-secondary inc">+</button>
+          <button class="btn btn-sm btn-outline-danger ms-2 remove">Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    totalEl.textContent = `Total: ₹${total.toFixed(2)}`;
+    footer.style.display = 'block';
+
+    // Quantity / Remove handlers
+    listEl.onclick = (e) => {
+      const row = e.target.closest('.cart-item');
+      if (!row) return;
+      const id = parseInt(row.dataset.id, 10);
+      const idx = cart.findIndex(x => x.id === id);
+      if (idx === -1) return;
+
+      if (e.target.classList.contains('inc')) cart[idx].qty += 1;
+      if (e.target.classList.contains('dec')) cart[idx].qty = Math.max(1, cart[idx].qty - 1);
+      if (e.target.classList.contains('remove')) cart.splice(idx, 1);
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    };
+  }
+
+  renderCart();
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/cart.js"></script> <!-- LINK TO JS FILE -->
 </body>
 </html>
